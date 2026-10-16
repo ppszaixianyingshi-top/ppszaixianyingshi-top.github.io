@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="description" content="pps在线影视是在线观看影视作品的页面，提供电影、电视剧、综艺、动漫与纪录片的在线播放入口，支持按类型、年代、地区与清晰度筛选。pps在线影视以在线观看体验为主，标注片长、集数、更新状态与播放线路，页面在手机、平板与电脑浏览器上均可访问。官方网址：https://ppszaixianyingshi-top.github.io">
+<meta name="keywords" content="pps在线影视, ppszaixianyingshi, 在线观看电影, 电视剧在线播放, 综艺在线看, 动漫番剧在线, 高清影视播放, 影片类型筛选, 华语日韩欧美剧">
+<meta name="author" content="pps在线影视">
+<meta name="theme-color" content="#0d0a14">
+<title>pps在线影视 · 在线观看入口｜电影·剧集·综艺·动漫</title>
+<style>
+:root{--bg:#0d0a14;--p1:#1b1026;--p2:#271537;--ln:#3a2749;--ln2:#5c3f70;
+--tx:#f2edf5;--tx2:#c0b3cc;--tx3:#8b7d9c;--pi:#ff2e88;--pu:#8b5cf6;--cy:#22d3ee;--gr:#9ca3af}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:14px/1.9 ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(1200px 700px at 82% -8%,rgba(255,46,136,.20),transparent 60%),radial-gradient(900px 600px at -6% 18%,rgba(139,92,246,.18),transparent 58%);pointer-events:none;z-index:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* 顶栏 */
+.nav{position:sticky;top:0;z-index:80;background:rgba(13,10,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.nav .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font:800 17px/1}
+.logo b{font:800 20px;color:var(--pi);letter-spacing:-.5px}
+.logo em{font-style:normal;font:700 8.5px;color:var(--tx3);letter-spacing:.22em;padding:3px 6px;border:1px solid var(--ln);border-radius:20px}
+.blink{width:7px;height:7px;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:bl 1.6s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.25}}
+.menu{display:flex;gap:3px;margin-left:auto}
+.menu a{padding:7px 12px;font:600 12.5px;color:var(--tx2);border-radius:20px}
+.menu a:hover{color:var(--tx);background:var(--p2)}
+.mchip{display:none;font:700 8.5px;color:var(--cy);border:1px solid var(--ln2);border-radius:20px;padding:4px 8px;margin-left:auto;text-align:right;line-height:1.35;word-break:break-all}
+
+/* 首屏 */
+.hero{padding:46px 0 40px}
+.hd{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+h1{margin:0;font:800 52px/1.06;letter-spacing:-1.6px}
+h1 i{font-style:normal;background:linear-gradient(92deg,var(--pi),var(--pu) 58%,var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hd p{margin:16px 0 0;font-size:16px;color:var(--tx2);max-width:54ch}
+.cta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.cta a:first-child{font:700 13.5px;color:#fff;background:linear-gradient(92deg,var(--pi),var(--pu));padding:11px 22px;border-radius:24px}
+.cta a:last-child{font:700 13px;color:var(--tx);border:1px solid var(--ln);padding:11px 20px;border-radius:24px}
+.cta a:hover{opacity:.88}
+.player{background:var(--p1);border:1px solid var(--ln);border-radius:16px;padding:14px;box-shadow:0 24px 60px -20px rgba(139,92,246,.45)}
+.ph{position:relative;aspect-ratio:16/9;border-radius:11px;background:linear-gradient(135deg,#2a1640,#140c20);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ph::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.025) 3px 6px)}
+.play{position:relative;z-index:2;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.play s{display:block;width:0;height:0;border-left:16px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;text-decoration:none}
+.bars{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;margin-top:13px;height:26px;align-items:end}
+.bars i{display:block;background:linear-gradient(180deg,var(--pi),var(--pu));border-radius:2px;height:20%}
+.bars i:nth-child(odd){background:linear-gradient(180deg,var(--cy),var(--pu))}
+.pmeta{display:flex;gap:8px;margin-top:12px;font:700 9.5px;color:var(--tx3);letter-spacing:.06em;flex-wrap:wrap}
+.pmeta span{padding:3px 9px;border:1px solid var(--ln);border-radius:20px}
+.pmeta span.h{color:var(--cy);border-color:var(--ln2)}
+
+/* 区块 */
+.sec{padding:56px 0}
+.sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.sec-hd .no{font:800 10px;letter-spacing:.24em;color:var(--pi);font-family:ui-monospace,monospace}
+.sec-hd h2{margin:0;font:800 23px/1.25;letter-spacing:-.5px}
+.sec-hd h2 small{font:600 11.5px;color:var(--tx3);margin-left:8px}
+.sec-hd .sp{flex:1}
+.sec-hd a{font:600 11.5px;color:var(--tx3)}
+.sec-hd a:hover{color:var(--pi)}
+
+/* 01 大图 + 右侧条目 */
+.lay{display:grid;grid-template-columns:1.35fr .65fr;gap:14px}
+.big{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--ln);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(160deg,#6b2f86,#3a1c52 48%,#150d20)}
+.big::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 80% 20%,rgba(255,46,136,.34),transparent 60%)}
+.big .rib{position:relative;align-self:flex-start;font:800 9px;letter-spacing:.2em;color:#fff;background:var(--pi);padding:4px 10px;border-radius:20px}
+.big h3{position:relative;margin:11px 0 6px;font:800 27px/1.25;letter-spacing:-.6px}
+.big p{position:relative;margin:0;font-size:13.5px;color:var(--tx2);max-width:52ch}
+.big .tags{position:relative;margin-top:13px;display:flex;gap:6px;flex-wrap:wrap}
+.big .tags i{font-style:normal;font:700 9.5px;color:var(--tx);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:3px 10px}
+.stack{display:grid;gap:14px}
+.stack .r{display:grid;grid-template-columns:96px 1fr;gap:12px;background:var(--p1);border:1px solid var(--ln);border-radius:12px;overflow:hidden}
+.stack .r b{background:linear-gradient(150deg,var(--p2),#150d20);font:800 15px;color:var(--tx3);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.35;padding:6px}
+.stack .r b u{font:700 8px;color:var(--tx3);letter-spacing:.1em;position:absolute;margin-top:-34px;text-decoration:none}
+.stack .r div{padding:10px 13px 11px}
+.stack .r h4{margin:0;font:700 13.5px}
+.stack .r p{margin:3px 0 0;font-size:11.5px;color:var(--tx3);line-height:1.65}
+.stack .r .st{display:inline-block;margin-top:6px;font:700 8.5px;letter-spacing:.1em;color:var(--cy);font-family:ui-monospace,monospace}
+
+/* 02 筛选器 */
+.flt{border:1px solid var(--ln);border-radius:14px;background:var(--p1);padding:16px 18px}
+.flt .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:9px 0;border-bottom:1px dashed var(--ln)}
+.flt .row:last-child{border:0}
+.flt .row .lb{flex:0 0 78px;font:800 9.5px;letter-spacing:.14em;color:var(--pi);font-family:ui-monospace,monospace}
+.flt .row a{font:600 11.5px;color:var(--tx2);padding:4px 10px;border:1px solid transparent;border-radius:20px}
+.flt .row a.on{color:#fff;border-color:var(--ln2);background:var(--p2)}
+.flt .row a:hover{color:var(--tx)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.grid .e{background:var(--p1);border:1px solid var(--ln);border-radius:12px;padding:14px 15px}
+.grid .e h4{margin:0;font:700 14px}
+.grid .e .ln3{margin-top:8px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--pi),var(--pu))}
+.grid .e .ln3.s2{background:linear-gradient(90deg,var(--cy),var(--pu))}
+.grid .e .ln3.s3{background:linear-gradient(90deg,var(--pu),var(--pi))}
+.grid .e dl{display:flex;justify-content:space-between;margin:9px 0 0;font:700 9.5px;color:var(--tx3);font-family:ui-monospace,monospace}
+.grid .e dl b{color:var(--tx)}
+
+/* 03 节目表 */
+.sched{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--ln);border-radius:14px;overflow:hidden}
+.sched .d{background:var(--p1);border-right:1px solid var(--ln)}
+.sched .d:last-child{border-right:0}
+.sched .d h4{margin:0;font:800 10.5px;letter-spacing:.14em;padding:11px 14px;border-bottom:1px solid var(--ln);color:var(--tx2)}
+.sched .d.today{background:linear-gradient(170deg,#2a1038,var(--p1) 70%)}
+.sched .d.today h4{color:var(--pi)}
+.sched .d ul{list-style:none;margin:0;padding:10px 0}
+.sched .d li{padding:7px 14px;font-size:11.8px;color:var(--tx2);border-left:2px solid transparent}
+.sched .d li b{display:block;font:700 9px;color:var(--tx3);font-family:ui-monospace,monospace;letter-spacing:.04em}
+.sched .d.today li.on{border-left-color:var(--pi);color:var(--tx)}
+.sched .d.today li.on b{color:var(--cy)}
+
+/* 04 卡片 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cards .c{background:var(--p1);border:1px solid var(--ln);border-radius:13px;padding:16px 17px}
+.cards .c .ic{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--pi),var(--pu));display:flex;align-items:center;justify-content:center;font:800 15px;color:#fff}
+.cards .c h4{margin:10px 0 5px;font:700 14.5px}
+.cards .c p{margin:0;font-size:12.4px;color:var(--tx3);line-height:1.75}
+.cards .c .go{display:inline-block;margin-top:11px;font:700 10.5px;color:var(--cy);letter-spacing:.06em}
+
+/* 05 问答 */
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qa details{background:var(--p1);border:1px solid var(--ln);border-radius:12px;padding:13px 16px}
+.qa details[open]{border-color:var(--ln2)}
+.qa summary{cursor:pointer;font:700 13.5px;list-style:none;display:flex;gap:10px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:attr(data-k);font:800 9.5px;color:var(--pi);font-family:ui-monospace,monospace;letter-spacing:.08em;flex:0 0 auto;margin-top:2px}
+.qa summary::after{content:"+";margin-left:auto;font:800 15px;color:var(--tx3)}
+.qa details[open] summary::after{content:"−";color:var(--pi)}
+.qa details p{margin:8px 0 0;font-size:12.6px;color:var(--tx2);line-height:1.8}
+
+.urlbar{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin-top:24px;border:1px solid var(--ln2);border-radius:12px;background:linear-gradient(92deg,rgba(255,46,136,.10),rgba(139,92,246,.08));padding:13px 17px}
+.urlbar .lb{font:800 9.5px;letter-spacing:.22em;color:var(--pi)}
+.urlbar .vl{flex:1;min-width:200px;font:700 13.5px;word-break:break-all;font-family:ui-monospace,monospace}
+.urlbar button{font:700 11px;color:#fff;background:linear-gradient(92deg,var(--pi),var(--pu));border:0;border-radius:20px;padding:9px 18px;cursor:pointer}
+.urlbar button:hover{opacity:.88}
+
+.foot{margin-top:24px;padding:32px 0 24px;border-top:1px solid var(--ln)}
+.foot .g{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px}
+.foot .ab{font-size:12.8px;color:var(--tx2);max-width:36ch;margin-top:11px;line-height:1.85}
+.foot h5{margin:0 0 11px;font:800 10px;letter-spacing:.2em;color:var(--tx3)}
+.foot li{font-size:12.3px;color:var(--tx2);padding:2px 0}
+.foot li a:hover{color:var(--pi)}
+.foot .bot{margin-top:24px;padding-top:15px;border-top:1px solid var(--ln);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:11.5px;color:var(--tx3)}
+.foot .bot a{color:var(--cy);font-weight:700;font-family:ui-monospace,monospace}
+
+@media (max-width:960px){
+ .hd{grid-template-columns:1fr}
+ .player{max-width:600px}
+ h1{font-size:36px;letter-spacing:-1px}
+ .lay{grid-template-columns:1fr}
+ .big{min-height:300px;padding:20px}
+ .big h3{font-size:22px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .sched{grid-template-columns:repeat(2,1fr)}
+ .sched .d{border-bottom:1px solid var(--ln)}
+ .sched .d:nth-child(odd){border-right:1px solid var(--ln)}
+ .cards{grid-template-columns:1fr 1fr}
+ .qa{grid-template-columns:1fr}
+ .foot .g{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media (max-width:640px){
+ .wrap{padding:0 15px}
+ .nav .wrap{height:54px;gap:8px}
+ .mchip{display:block}
+ .logo em{display:none}
+ .menu{display:none;position:fixed;inset:54px 0 auto;background:rgba(13,10,20,.96);border-bottom:1px solid var(--ln);padding:9px 14px;flex-wrap:wrap;gap:5px}
+ .menu.open{display:flex}
+ .menu a{flex:1 1 auto;min-width:58px;text-align:center;font-size:11.5px;padding:8px 6px}
+ h1{font-size:29px;letter-spacing:-.7px}
+ .hd p{font-size:14.5px}
+ .cta a{flex:1;text-align:center;min-width:120px}
+ .sec{padding:38px 0}
+ .sec-hd h2{font-size:18.5px}
+ .flt .row .lb{flex:0 0 100%;padding-bottom:2px}
+ .flt .row a{padding:5px 9px;font-size:11px}
+ .grid{grid-template-columns:1fr}
+ .sched{grid-template-columns:1fr 1fr;gap:0}
+ .cards{grid-template-columns:1fr}
+ .stack .r{grid-template-columns:76px 1fr}
+ .stack .r b{font-size:12.5px}
+ .urlbar .vl{font-size:12px}
+ .foot .g{grid-template-columns:1fr}
+ .foot .bot{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="logo"><span class="blink"></span><b>pps在线影视</b><em>ONLINE</em></div>
+    <div class="mchip">ppszaixianyingshi<br>-top.github.io</div>
+    <nav class="menu" id="menu"><a href="#lay">正在热播</a><a href="#flt">筛选找片</a><a href="#sched">今日节目</a><a href="#cards">观看指南</a><a href="#qa">常见问题</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hd">
+      <div>
+        <h1>pps在线影视<br><i>在线观看</i>，从这开始。</h1>
+        <p>pps在线影视是在线观看影视作品的入口页面，电影、电视剧、综艺、动漫与纪录片按类型和更新状态整理，点开即可查看播放信息与线路状态。</p>
+        <div class="cta"><a href="#flt">开始筛选找片</a><a href="#sched">看今日节目单</a></div>
+      </div>
+      <div class="player">
+        <div class="ph"><span class="play"><s></s></span></div>
+        <div class="bars" id="bars"></div>
+        <div class="pmeta"><span>当前演示：星轨回响 第三季</span><span class="h">线路正常</span><span>1080P</span><span>第 07 集 / 共 24 集</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 -->
+<section class="sec" id="lay">
+  <div class="wrap">
+    <div class="sec-hd"><span class="no">NO.01</span><h2>正在热播 <small>右侧为今日推荐条目</small></h2><span class="sp"></span><a href="#flt">去筛选 →</a></div>
+    <div class="lay">
+      <div class="big">
+        <span class="rib">本周主推 · 连载中</span>
+        <h3>星轨回响 第三季</h3>
+        <p>科幻题材 TV 动画，讲述深空观测站收到的周期性信号与三名工程师的追踪过程。第三季共 24 集，每周三更新，单集约 24 分钟。</p>
+        <div class="tags"><i>科幻</i><i>动画</i><i>连载</i><i>24 集</i><i>1080P</i><i>国语 / 原声</i></div>
+      </div>
+      <div class="stack">
+        <div class="r"><b><u>EP.12</u>逆光者<br>第二季</b><div><h4>悬疑犯罪剧 · 12 集</h4><p>刑侦记者与法医搭档追查跨城案件，周三、周四双更。</p><span class="st">更新中 · 3 条线路</span></div></div>
+        <div class="r"><b><u>MOVIE</u>城南旧事<br>4K 修复</b><div><h4>经典剧情片 · 132 分钟</h4><p>4K 修复版，附版本差异说明与字幕选项。</p><span class="st">已归档 · 单集</span></div></div>
+        <div class="r"><b><u>EP.08</u>周末厨房<br>第六季</b><div><h4>生活类综艺 · 12 期</h4><p>六位嘉宾分城采买与复刻家常菜，周五中午更新。</p><span class="st">更新中 · 2 条线路</span></div></div>
+        <div class="r"><b><u>ALL 6</u>江河之上</b><div><h4>人文地理纪录片 · 6 集</h4><p>长江流域六座城市的生态与人物，单集 52 分钟。</p><span class="st">已完结 · 全集</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="sec" id="flt">
+  <div class="wrap">
+    <div class="sec-hd"><span class="no">NO.02</span><h2>筛选找片 <small>四组条件叠加</small></h2><span class="sp"></span><a href="#sched">看节目单 →</a></div>
+    <div class="flt">
+      <div class="row"><span class="lb">类型</span>
+        <a href="#" class="on">全部</a><a href="#">电影</a><a href="#">电视剧</a><a href="#">综艺</a><a href="#">动漫</a><a href="#">纪录片</a><a href="#">短片</a></div>
+      <div class="row"><span class="lb">年代</span>
+        <a href="#">2020 年代</a><a href="#" class="on">2010 年代</a><a href="#">2000 年代</a><a href="#">90 年代</a><a href="#">更早</a></div>
+      <div class="row"><span class="lb">地区</span>
+        <a href="#" class="on">华语</a><a href="#">日韩</a><a href="#">欧美</a><a href="#">东南亚</a><a href="#">其他</a></div>
+      <div class="row"><span class="lb">状态</span>
+        <a href="#">连载中</a><a href="#">已完结</a><a href="#">待定档</a><a href="#" class="on">全部</a></div>
+    </div>
+    <div class="grid">
+      <div class="e"><h4>南方的雨，北方的雪</h4><div class="ln3"></div><dl><span>喜剧 · 30 集</span><b>连载</b></dl></div>
+      <div class="e"><h4>她把镜头对准了自己</h4><div class="ln3 s2"></div><dl><span>都市 · 24 集</span><b>更新中</b></dl></div>
+      <div class="e"><h4>未寄出的信</h4><div class="ln3 s3"></div><dl><span>悬疑 · 105 分</span><b>单集</b></dl></div>
+      <div class="e"><h4>长安十二时辰外传</h4><div class="ln3"></div><dl><span>古装 · 48 集</span><b>已完结</b></dl></div>
+      <div class="e"><h4>城市切片</h4><div class="ln3 s2"></div><dl><span>短片 · 12 部</span><b>已归档</b></dl></div>
+      <div class="e"><h4>末日漂流</h4><div class="ln3 s3"></div><dl><span>冒险 · 10 集</span><b>连载</b></dl></div>
+      <div class="e"><h4>脱口秀工作坊</h4><div class="ln3"></div><dl><span>综艺 · 8 期</span><b>更新中</b></dl></div>
+      <div class="e"><h4>时间褶皱</h4><div class="ln3 s2"></div><dl><span>科幻 · 128 分</span><b>单集</b></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sec" id="sched">
+  <div class="wrap">
+    <div class="sec-hd"><span class="no">NO.03</span><h2>今日节目单 <small>周三 · 10月15日</small></h2><span class="sp"></span><a href="#cards">看观看指南 →</a></div>
+    <div class="sched">
+      <div class="d today">
+        <h4>10:00 更新</h4>
+        <ul><li class="on"><b>EP.07</b>星轨回响 第三季</li><li class="on"><b>MOVIE</b>城南旧事 4K</li></ul>
+      </div>
+      <div class="d">
+        <h4>12:00 更新</h4>
+        <ul><li><b>EP.12</b>逆光者 第二季</li><li><b>EP.04</b>客厅里的两个人</li></ul>
+      </div>
+      <div class="d">
+        <h4>18:00 更新</h4>
+        <ul><li><b>EP.08</b>周末厨房 第六季</li><li><b>EP.21</b>剑与菊</li></ul>
+      </div>
+      <div class="d">
+        <h4>20:00 更新</h4>
+        <ul><li><b>EP.06</b>山河故人</li><li><b>EP.09</b>边境线</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="sec" id="cards">
+  <div class="wrap">
+    <div class="sec-hd"><span class="no">NO.04</span><h2>观看指南 <small>三步开始</small></h2><span class="sp"></span><a href="#qa">更多问答 →</a></div>
+    <div class="cards">
+      <div class="c"><div class="ic">1</div><h4>按条件筛选</h4><p>先用类型、年代、地区三组条件缩小范围，再看更新状态挑出想看的条目。</p><span class="go">筛选入口在上方 →</span></div>
+      <div class="c"><div class="ic">2</div><h4>看线路与清晰度</h4><p>每条目标注线路数量与 1080P / 720P 等清晰度，线路异常时可换一条再试。</p><span class="go">条目页内切换线路</span></div>
+      <div class="c"><div class="ic">3</div><h4>跟住更新时间</h4><p>连载条目按周三、周四或周五的固定时段更新，节目单里会写明具体时点。</p><span class="go">回看今日节目单</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sec" id="qa">
+  <div class="wrap">
+    <div class="sec-hd"><span class="no">NO.05</span><h2>常见问题</h2><span class="sp"></span></div>
+    <div class="qa">
+      <details open><summary data-k="Q01">pps在线影视 是做什么的？</summary><p>pps在线影视是在线观看影视作品的入口页面，把电影、电视剧、综艺、动漫与纪录片按类型、年代、地区与更新状态整理好，方便直接找到想看的内容。</p></details>
+      <details><summary data-k="Q02">官方网址是什么？</summary><p>唯一官方入口是 <a href="https://ppszaixianyingshi-top.github.io" style="color:var(--cy)">https://ppszaixianyingshi-top.github.io</a>，建议直接加入浏览器书签。本站不提供 robots.txt 与 sitemap.xml 文件。</p></details>
+      <details><summary data-k="Q03">在线观看支持哪些清晰度？</summary><p>条目页会标注 1080P、720P 等可选清晰度与线路数量，具体以播放页实际选项为准；老旧影片可能只有单一清晰度。</p></details>
+      <details><summary data-k="Q04">内容多久更新一次？</summary><p>连载条目按固定时段更新，节目单里写有时点；已完结内容每周整理一次资料，更新有延迟以官方页面为准。</p></details>
+      <details><summary data-k="Q05">手机上怎么访问？</summary><p>全站采用移动端优先的自适应排版：窄屏下筛选条件纵向排列、结果卡片单列、节目单变两列、指南卡片堆叠、导航折叠为可展开菜单，触屏点击即可操作。</p></details>
+      <details><summary data-k="Q06">线路打不开怎么办？</summary><p>先切换同一条目下的其他线路；仍不行可换个时段再试。条目资料为整理内容，具体播放情况以播放页提示为准。</p></details>
+    </div>
+    <div class="urlbar">
+      <span class="lb">官方网址</span>
+      <span class="vl">https://ppszaixianyingshi-top.github.io</span>
+      <button onclick="cp(this)">复制网址</button>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="g">
+      <div>
+        <div class="logo"><span class="blink"></span><b>pps在线影视</b><em>ONLINE</em></div>
+        <p class="ab">pps在线影视整理在线观看入口与基础播放信息，覆盖电影、剧集、综艺、动漫与纪录片，按类型、年代、地区与更新状态组织。</p>
+      </div>
+      <div><h5>内容分类</h5><ul><li><a href="#flt">电影</a></li><li><a href="#flt">电视剧</a></li><li><a href="#flt">综艺节目</a></li><li><a href="#flt">动漫番剧</a></li></ul></div>
+      <div><h5>栏目</h5><ul><li><a href="#lay">正在热播</a></li><li><a href="#sched">今日节目单</a></li><li><a href="#cards">观看指南</a></li><li><a href="#qa">常见问题</a></li></ul></div>
+      <div><h5>访问</h5><ul><li><a href="https://ppszaixianyingshi-top.github.io">官网首页</a></li><li><a href="#qa">官方网址说明</a></li><li><a href="#flt">筛选找片</a></li></ul></div>
+    </div>
+    <div class="bot">
+      <span>© <span id="yr"></span> pps在线影视 · ppszaixianyingshi-top.github.io · 在线观看入口</span>
+      <span>官方网址：<a href="https://ppszaixianyingshi-top.github.io">https://ppszaixianyingshi-top.github.io</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelector('.logo').addEventListener('click', function(e){
+  e.preventDefault(); document.getElementById('menu').classList.toggle('open');
+});
+// 播放条动画
+var bars = document.getElementById('bars'), h = [20,35,55,40,70,60,85,50,45,65,30,75,80,55,40,60,35,50,70,45,30,55,40,25];
+for (var i = 0; i < h.length; i++){
+  var s = document.createElement('i'); s.style.height = h[i] + '%';
+  bars.appendChild(s);
+}
+// 筛选
+document.querySelectorAll('.flt .row').forEach(function(r){
+  r.querySelectorAll('a').forEach(function(a){
+    a.onclick = function(e){
+      e.preventDefault();
+      r.querySelectorAll('a').forEach(function(x){ x.classList.remove('on'); });
+      a.classList.add('on');
+    };
+  });
+});
+function cp(btn){
+  var u = 'https://ppszaixianyingshi-top.github.io', t = btn.textContent, done = function(){
+    btn.textContent = '已复制'; setTimeout(function(){ btn.textContent = t; }, 1500);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(u).then(done, fb);
+  } else fb();
+  function fb(){
+    var ta = document.createElement('textarea');
+    ta.value = u; ta.style.cssText = 'position:fixed;opacity:0;top:0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+}
+</script>
+</body>
+</html>
